@@ -1,4 +1,5 @@
 receivers:
+  selfscrapereceiver:
   udsreceiver:
     zeromqpull:
       # Address for pulling events from probe
@@ -28,6 +29,7 @@ receivers:
         - name: kprobe-tcp_drop
         - name: kprobe-tcp_retransmit_skb
 analyzers:
+  simpleanalyzer:
   tcpmetricanalyzer:
   networkanalyzer:
     connect_timeout: 100

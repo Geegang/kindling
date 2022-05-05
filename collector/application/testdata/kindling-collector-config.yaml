@@ -1,6 +1,7 @@
 receivers:
   mockreceiver:
     name: mock
+  selfscrapereceiver:
   udsreceiver:
     zeromqpull:
       endpoint: ipc:///home/kindling-sub/0
@@ -32,6 +33,7 @@ receivers:
 analyzers:
   mockanalyzer:
     num: 10
+  simpleanalyzer:
   networkanalyzer:
     connect_timeout: 100
     request_timeout: 1
