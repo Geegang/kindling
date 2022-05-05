@@ -150,7 +150,6 @@ func (r *UdsReceiver) startZeroMqPull() error {
 
 		}
 	}()
-	r.shutdownWG.Wait()
 	return nil
 }
 

@@ -4,6 +4,7 @@ import (
 	"github.com/Kindling-project/kindling/collector/component"
 	"github.com/Kindling-project/kindling/collector/consumer"
 	"github.com/Kindling-project/kindling/collector/consumer/processor"
+	"github.com/Kindling-project/kindling/collector/internal/envhelper"
 	"github.com/Kindling-project/kindling/collector/metadata/kubernetes"
 	"github.com/Kindling-project/kindling/collector/model"
 	"github.com/Kindling-project/kindling/collector/model/constlabels"
@@ -40,10 +41,10 @@ func NewKubernetesProcessor(cfg interface{}, telemetry *component.TelemetryTools
 	}
 
 	var localNodeIp, localNodeName string
-	if localNodeIp, err = getHostIpFromEnv(); err != nil {
+	if localNodeIp, err = envhelper.GetHostIpFromEnv(); err != nil {
 		telemetry.Logger.Warn("Local NodeIp can not found", zap.Error(err))
 	}
-	if localNodeName, err = getHostNameFromEnv(); err != nil {
+	if localNodeName, err = envhelper.GetHostNameFromEnv(); err != nil {
 		telemetry.Logger.Warn("Local NodeName can not found", zap.Error(err))
 	}
 	return &K8sMetadataProcessor{
